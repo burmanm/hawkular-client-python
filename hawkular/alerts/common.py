@@ -50,11 +50,13 @@ class HawkularAlertsClient(HawkularBaseClient):
 
         super(HawkularAlertsClient, self)._setup_path()
 
-    def triggers(self):
-        """
-        Returns triggers methods
-        """
-        return AlertsTriggerClient(self)
+        self.triggers = AlertsTriggerClient(self)
+
+    # def triggers(self):
+    #     """
+    #     Returns triggers methods
+    #     """
+    #     return AlertsTriggerClient(self)
 
     def status(self):
         orig_dict = self._get(self._service_url('status'))

@@ -187,6 +187,7 @@ class AlertsTriggerClient(object):
         data = self._serialize_object(member)
         return Trigger(self._post(self._service_url(['triggers', 'groups', 'members']), data))
 
+    # TODO The API defines two, PUT which updates conditions and PUT which updates trigger mode also 
     def put_trigger_conditions(self, trigger_id, trigger_mode, conditions):
         data = self._serialize_object(conditions)
         url = self._service_url(['triggers', trigger_id, 'conditions', trigger_mode])
@@ -241,3 +242,7 @@ class AlertsTriggerClient(object):
         :param dampening_id: id of the Dampening to be deleted
         """
         self._delete(self._service_url(['triggers', 'groups', group_id, 'dampenings', dampening_id]))
+
+# def enable/disable_trigger (or should it be in the update?)
+# def orphan / deorphan trigger
+# 
